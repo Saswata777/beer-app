@@ -14,7 +14,7 @@ This is a small React application that fetches and displays data from the [Sampl
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/beer-app.git
+   git clone https://github.com/Saswata777/beer-app.git
    cd beer-app
    ```
 
@@ -45,7 +45,10 @@ This is a small React application that fetches and displays data from the [Sampl
 - Axios: A promise-based HTTP client for the browser and Node.js.
 - Tailwind CSS: A utility-first CSS framework for rapid UI development.
 
+## Links
 
+- GitHub Repository: [https://github.com/Saswata777/beer-app](https://github.com/Saswata777/beer-app)
+- Deployed Application: [https://beer-app-w7km.onrender.com/](https://beer-app-w7km.onrender.com/)
 
 ## Contributing
 
