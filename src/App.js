@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import BeerCard from './BeerCard';
+import './App.css'
 
-function App() {
+const App = () => {
+  const [beers, setBeers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    axios.get('https://api.sampleapis.com/beers/ale')
+      .then(response => setBeers(response.data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  const filteredBeers = beers.filter(beer =>
+    beer.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-slate-900 container mx-auto p-4">
+      <input
+        type="text"
+        placeholder="Search Beers"
+        className="w-[40vw] p-2 mb-20 border border-gray-300 rounded fixed "
+        onChange={e => setSearchTerm(e.target.value)}
+      />
+      <div className=" grid mt-32 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {filteredBeers.map(beer => (
+          <BeerCard key={beer.id} beer={beer} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
